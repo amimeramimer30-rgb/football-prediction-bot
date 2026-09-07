@@ -2,8 +2,6 @@ import os
 import asyncio
 import aiohttp
 import requests
-import pandas as pd
-import numpy as np
 import sqlite3
 from datetime import datetime
 from scipy.stats import poisson
