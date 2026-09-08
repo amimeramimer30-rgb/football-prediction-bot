@@ -18,6 +18,7 @@ def send_telegram_message(text):
     }
     response = requests.post(url, json=payload)
     print("Telegram response status:", response.status_code)
+    print("Telegram response body:", response.text)
 
 def main():
     if not FOOTBALL_DATA_API_KEY:
@@ -42,14 +43,12 @@ def main():
         
     message = "📊 *توقعات المباريات القادمة (Poisson Model):*\n\n"
     
-    # تاخد أول 8 ماتشات باش الرسالة ما تكونش طويلة بزاف فتيليجرام
     for match in matches[:8]:
         home = match['homeTeam']['name']
         away = match['awayTeam']['name']
         competition = match['competition']['name']
         utc_date = match['utcDate']
         
-        # حساب احتمالات بواسون (باستخدام معدلات افتراضية ثابتة أو متوسطات)
         lambda_home = 1.4
         lambda_away = 1.1
         
